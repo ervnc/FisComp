@@ -1,12 +1,12 @@
       program ex2
-        dimension v1(3), v2(3), v3(3), v4(3)
-        real crossI, croosJ, crossK, norm_cross, crossV4I, croosV4J, crossV4K, area_lateral, volume, dot
+        dimension v1(3), v2(3), v3(3)
+        real crossI, croosJ, crossK, norm_cross, area_lateral, volume, dot
+        real crossV2I, crossV2J, crossV2K, crossV3I, crossV3J, crossV3K
+        real normV1, normV2
 
         write(*, *)'Digite os valores do vetor 1: '; read(*,*) v1
         write(*, *)'Digite os valores do vetor 2: '; read(*,*) v2
         write(* ,*)'Digite os valores do vetor 3: '; read(*,*) v3
-
-        v4 = v1 - v2
 
         !Produto vetorial entre v1 X v2
         crossI = v1(2)*v2(3) - v1(3)*v2(2)
@@ -28,13 +28,22 @@
           stop
         end if
 
-        !Calcular o produto vetorial de v4 X v3
-        crossV4I = v4(2)*v3(3) - v4(3)*v3(2)
-        croosV4J = v4(1)*v3(3) - v4(3)*v3(1)
-        crossV4K = v4(1)*v3(2) - v4(2)*v3(1)
+        !Calcular produto vetorial de v2 X v3
+        crossV2I = v2(2)*v3(3) - v2(3)*v3(2)
+        crossV2J = v2(3)*v3(1) - v2(1)*v3(3)
+        crossV2K = v2(1)*v3(2) - v2(2)*v3(1)
+
+        !Calcular produto vetorial de v3 X v1
+        crossV3I = v3(2)*v1(3) - v3(3)*v1(2)
+        crossV3J = v3(3)*v1(1) - v3(1)*v1(3)
+        crossV3K = v3(1)*v1(2) - v3(2)*v1(1)
+
+        !Calcular a norma dos vetores
+        normV1 = sqrt(crossV2I**2 + crossV2J**2 + crossV2K**2)
+        normV2 = sqrt(crossV3I**2 + crossV3J**2 + crossV3K**2)
 
         !Calcular a área lateral
-        area_lateral = sqrt(crossV4I**2 + croosV4J**2 + crossV4K**2)
+        area_lateral = 2*(normV1 + normV2 + norm_cross)
 
         !Calcular o volume
         volume = abs(dot)

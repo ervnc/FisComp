@@ -1,6 +1,6 @@
       program ex3
         real*8, allocatable :: numbers(:)
-        real*8 temp 
+        real*8 temp
         integer m, n, i
 
         open(unit=1, file='entrada-3-#14668849.in')
@@ -13,7 +13,6 @@
           n = n + 1
         end do
 
-        !Voltar para o início do arquivo
 100     continue
 
         !Alocar memória para os números - Array
